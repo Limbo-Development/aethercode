@@ -1,4 +1,0 @@
-build_from_source="true"
-legacy-peer-deps="true"
-timeout=180000
-msvs_version=2022
