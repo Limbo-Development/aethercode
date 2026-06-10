@@ -12,6 +12,7 @@
   <?endif?>
 
   <?define ProductName="!(loc.ProductName)" ?>
+  <?define ProductVersion="1.121.03868"
   <?define ProductNameWithVersion="!(loc.ProductName) $(var.ProductVersion) $(var.Arch)" ?>
   <?define ProductLanguage="!(loc.ProductLanguage)" ?>
   <?define AppFolderName="$(var.AppName)" ?>
