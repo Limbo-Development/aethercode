@@ -36,8 +36,6 @@ Build instructions can be found [here](https://github.com/VSCodium/vscodium/blob
 ## <a id="why"></a>Why Does This Exist
 We (Limbo Development) forked VSCode to develop AetherCode because we didn't quite like the appearance of VSCode in general, and wanted to see what it would look like with a more smooth/visually appealing look.
 
-If you want to build from source yourself, head over to [Microsoft's vscode repo](https://github.com/Microsoft/vscode) and follow their [instructions](https://github.com/Microsoft/vscode/wiki/How-to-Contribute#build-and-run). This repo exists to make it easier to get the latest version of MIT-licensed Visual Studio Code.
-
 Microsoft's build process (which we are running to build the binaries) does download additional files. Those packages downloaded during build are:
 
 - Pre-built extensions from the GitHub:
