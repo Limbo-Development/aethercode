@@ -11,13 +11,13 @@
     <?define Arch="(x64)" ?>
   <?endif?>
 
-  <?define ProductName="!(loc.ProductName)" ?>
-  <?define ProductVersion="1.121.03868"
-  <?define ProductNameWithVersion="!(loc.ProductName) $(var.ProductVersion) $(var.Arch)" ?>
+  <?define ProductName="AetherCode" ?>
+  <?define ProductVersion="1.121.03868" ?>
+  <?define ProductNameWithVersion="AetherCode v1.121.03868 $(var.Arch)" ?>
   <?define ProductLanguage="!(loc.ProductLanguage)" ?>
-  <?define AppFolderName="$(var.AppName)" ?>
-  <?define ProductManufacturerShort="$(var.ManufacturerName)" ?>
-  <?define ProductManufacturerLong="$(var.ManufacturerName)" ?>
+  <?define AppFolderName="AetherCode" ?>
+  <?define ProductManufacturerShort="Limbo Development" ?>
+  <?define ProductManufacturerLong="Limbo Development" ?>
 
   <!-- Static settings, DO NOT TOUCH or upgrades will break! -->
   <?define ProductUpgradeCode="{@@PRODUCT_UPGRADE_CODE@@}" ?>
