@@ -3,9 +3,6 @@ name: CI - Build - macOS
 on:
   workflow_dispatch:
     inputs:
-      generate_assets:
-        type: boolean
-        description: Generate assets
       checkout_pr:
         type: string
         description: Checkout PR
@@ -22,7 +19,7 @@ on:
       - "**/*.md"
 
 env:
-  APP_NAME: VSCodium
+  APP_NAME: AetherCode
   BINARY_NAME: ${{ (github.ref == 'refs/heads/insider' || (github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'insider')) && 'codium-insiders' || 'codium' }}
   GH_REPO_PATH: ${{ github.repository }}
   GITHUB_BRANCH: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.event.head }}
@@ -75,11 +72,10 @@ jobs:
         env:
           SHOULD_BUILD: yes
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./build.sh
+        run: chmod +x ./build.sh && ./build.sh
 
       - name: Prepare assets
-        run: ./prepare_assets.sh
-        if: env.SHOULD_BUILD == 'yes' && github.event.inputs.generate_assets == 'true'
+        run: chmod +x ./prepare_assets.sh && ./prepare_assets.sh
 
       - name: Upload assets
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -87,4 +83,3 @@ jobs:
           name: bin-${{ matrix.vscode_arch }}
           path: assets/
           retention-days: 3
-        if: env.SHOULD_BUILD == 'yes' && github.event.inputs.generate_assets == 'true'
