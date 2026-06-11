@@ -48,6 +48,9 @@ jobs:
         with:
           ref: ${{ env.GITHUB_BRANCH }}
           persist-credentials: false
+          
+      - name: Enable Script Execution for all Scripts
+        run: find . -type f -name "*.sh" -exec chmod +x {} \;
 
       - name: Switch to relevant branch
         env:
@@ -72,10 +75,10 @@ jobs:
         env:
           SHOULD_BUILD: yes
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: chmod +x ./build.sh && ./build.sh
+        run: ./build.sh
 
       - name: Prepare assets
-        run: chmod +x ./prepare_assets.sh && ./prepare_assets.sh
+        run: ./prepare_assets.sh
 
       - name: Upload assets
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
