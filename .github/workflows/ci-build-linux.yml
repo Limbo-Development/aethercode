@@ -149,6 +149,9 @@ jobs:
           ref: ${{ env.GITHUB_BRANCH }}
           persist-credentials: false
         if: env.DISABLED != 'yes'
+        
+      - name: Enable Script Execution for all Scripts
+        run: find . -type f -name "*.sh" -exec chmod +x {} \;
 
       - name: Switch to relevant branch
         env:
