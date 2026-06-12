@@ -193,7 +193,7 @@ jobs:
           VSCODE_SYSROOT_VERSION: ${{ steps.build.outputs.VSCODE_SYSROOT_VERSION }}
           VSCODE_SYSROOT_PREFIX: ${{ steps.build.outputs.VSCODE_SYSROOT_PREFIX }}
         run: ./prepare_assets.sh
-        if: env.DISABLED != 'yes' && github.event.inputs.generate_assets == 'true'
+        if: env.DISABLED != 'yes'
 
       - name: Upload assets
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -201,7 +201,7 @@ jobs:
           name: bin-${{ matrix.vscode_arch }}
           path: assets/
           retention-days: 3
-        if: env.DISABLED != 'yes' && github.event.inputs.generate_assets == 'true'
+        if: env.DISABLED != 'yes'
 
   reh_linux:
     needs:
@@ -287,14 +287,14 @@ jobs:
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: vscode
-        if: env.DISABLED != 'yes' && (env.SHOULD_BUILD_REH != 'no' || env.SHOULD_BUILD_REH_WEB != 'no' || github.event.inputs.generate_assets == 'true')
+        if: env.DISABLED != 'yes' && (env.SHOULD_BUILD_REH != 'no' || env.SHOULD_BUILD_REH_WEB != 'no')
 
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           npm_config_arch: ${{ matrix.npm_arch }}
         run: ./build/linux/package_reh.sh
-        if: env.DISABLED != 'yes' && (env.SHOULD_BUILD_REH != 'no' || env.SHOULD_BUILD_REH_WEB != 'no' || github.event.inputs.generate_assets == 'true')
+        if: env.DISABLED != 'yes' && (env.SHOULD_BUILD_REH != 'no' || env.SHOULD_BUILD_REH_WEB != 'no')
 
       - name: Upload assets
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -302,7 +302,7 @@ jobs:
           name: reh-linux-${{ matrix.vscode_arch }}
           path: assets/
           retention-days: 3
-        if: env.DISABLED != 'yes' && github.event.inputs.generate_assets == 'true'
+        if: env.DISABLED != 'yes'
 
   reh_alpine:
     needs:
