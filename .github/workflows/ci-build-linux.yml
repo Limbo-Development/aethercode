@@ -247,6 +247,9 @@ jobs:
           persist-credentials: false
         if: env.DISABLED != 'yes'
 
+      - name: Enable Script Execution for all Scripts
+        run: find . -type f -name "*.sh" -exec chmod +x {} \;
+
       - name: Switch to relevant branch
         env:
           PULL_REQUEST_ID: ${{ github.event.inputs.checkout_pr }}
@@ -329,6 +332,9 @@ jobs:
         with:
           ref: ${{ env.GITHUB_BRANCH }}
           persist-credentials: false
+          
+      - name: Enable Script Execution for all Scripts
+        run: find . -type f -name "*.sh" -exec chmod +x {} \;
 
       - name: Switch to relevant branch
         env:
